@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#05070b">
+  <title>aepsa1d — edit creator</title><meta name="description" content="Cinematic edits, color corrections, After Effects projects and edit packs by aepsa1d.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="intro" id="intro" aria-label="Site intro">
+    <div class="intro-mist"></div><div class="intro-runes" aria-hidden="true">ᚷ　✧　ᚹ　✦　ᛟ</div>
+    <div class="intro-content">
+      <p class="intro-kicker">THREE BLOODLINES · ONE LEGACY</p>
+      <div class="magic-ring"><span class="ring-orbit orbit-a"></span><span class="ring-orbit orbit-b"></span><span class="ring-mark mark-one">✧</span><span class="ring-mark mark-two">ᚷ</span><img src="assets/profile.jpg" alt="Your profile photo" class="intro-avatar"></div>
+      <h1 class="intro-name">aepsa1d</h1><p class="intro-subtitle">EDIT CREATOR</p>
+      <p class="intro-quote">“the power was always within”</p>
+      <button class="enter-button" id="enterButton">ENTER THE UNKNOWN <span>↗</span></button>
+      <button class="skip-intro" id="skipIntro">SKIP INTRO</button>
+    </div>
+    <div class="intro-bottom">A TRIBRID-INSPIRED INTRODUCTION <span>✦</span></div>
+  </div>
+
+  <div class="site" id="site">
+    <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="grain"></div>
+    <div class="background-image" aria-hidden="true"></div><div class="background-shade" aria-hidden="true"></div>
+    <div class="rune-field" aria-hidden="true"><span>ᚷ</span><span>✧</span><span>ᛟ</span><span>ᚹ</span><span>✦</span></div>
+    <div class="raven raven-one" aria-hidden="true"><svg viewBox="0 0 120 58"><path d="M4 35 C21 9 35 10 52 26 C43 8 40 2 38 0 C61 11 65 24 66 30 C84 14 100 14 116 8 C106 24 94 33 79 36 C61 42 45 39 31 48 C39 35 45 31 52 29 C34 22 20 28 4 35Z"/></svg></div>
+    <header class="topbar">
+      <nav class="main-nav" aria-label="Main navigation"><a class="active" href="#home">HOME</a><a href="#edits">EDITS</a><a href="#projects">PROJECTS</a><a href="#cc">CC</a><a href="#edit-pack">EDIT PACK</a></nav>
+      <div class="top-social"><a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" aria-label="TikTok">♪ <span>TikTok</span></a><a href="https://discord.com/" target="_blank" rel="noreferrer" aria-label="Discord">◉ <span>Discord</span></a><button id="soundToggle" class="star-button" aria-label="Toggle ambient effects">✳</button></div>
+      <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="side-quote quote-left"><p>“you’re<br>not the villain<br>in my story”</p><span class="ornament-line">──── ✧ ────</span></div>
+        <div class="side-quote quote-right"><p>“some people<br>are worth<br>the danger”</p><span class="ornament-line">──── ✧ ────</span></div>
+        <div class="hero-center">
+          <div class="profile-frame"><span class="frame-star star-top">✦</span><span class="frame-star star-bottom">✧</span><div class="profile-ring"><img src="assets/profile.jpg" alt="aepsa1d profile photo" class="profile-photo"></div></div>
+          <h1 class="brand-name">aepsa1d</h1><p class="brand-role">EDIT CREATOR</p>
+          <p class="tagline">“turning moments into memories”</p><div class="long-ornament">────────── ✦ ──────────</div>
+          <div class="hero-buttons"><a class="social-button" href="https://www.tiktok.com/" target="_blank" rel="noreferrer"><span class="social-symbol">♪</span> TikTok <span class="external">↗</span></a><a class="social-button" href="https://discord.com/" target="_blank" rel="noreferrer"><span class="social-symbol">◉</span> Discord <span class="external">↗</span></a></div>
+        </div>
+        <div class="category-grid">
+          <a class="category-card" id="edits" href="#preview-edits" data-preview="edits"><img src="assets/edits.jpg" alt="Edits preview" class="category-image"><span class="card-dim"></span><span class="card-symbol raven-symbol">♧</span><span class="category-title">EDITS</span><span class="category-description">My best edits, all in one place.</span><span class="card-arrow">⟶</span></a>
+          <a class="category-card" id="cc" href="#preview-cc" data-preview="cc"><img src="assets/cc.jpg" alt="Color correction preview" class="category-image"><span class="card-dim"></span><span class="card-symbol">⌁</span><span class="category-title">CC</span><span class="category-description">My color corrections<br>and colorings.</span><span class="card-arrow">⟶</span></a>
+          <a class="category-card" id="projects" href="#preview-projects" data-preview="projects"><img src="assets/projects.jpg" alt="After Effects projects preview" class="category-image"><span class="card-dim"></span><span class="card-symbol">⚜</span><span class="category-title">PROJECTS</span><span class="category-description">AE projects, presets<br>and more.</span><span class="card-arrow">⟶</span></a>
+          <a class="category-card" id="edit-pack" href="#preview-pack" data-preview="pack"><img src="assets/edit-pack.jpg" alt="Edit pack preview" class="category-image"><span class="card-dim"></span><span class="card-symbol">▤</span><span class="category-title">EDIT PACK</span><span class="category-description">Resources for<br>your edits.</span><span class="card-arrow">⟶</span></a>
+        </div>
+        <div class="bottom-quote bottom-left"><p>the vampire<br>diaries</p><span>──── ✧ ────</span></div>
+        <div class="bottom-quote bottom-right"><p>darkness<br>always finds<br>a way</p><span>──── ✧ ────</span></div>
+        <a href="#diary" class="scroll-prompt"><span class="mouse-icon"><i></i></span><span>SCROLL TO EXPLORE</span><b>──── ✦ ────</b></a>
+      </section>
+
+      <section class="diary-section section" id="diary">
+        <div class="section-label">01 / THE LITTLE DETAILS</div><h2>A page from the <em>unknown.</em></h2>
+        <div class="diary-layout"><div class="diary-copy"><p>Every edit begins with a feeling. A scene, a sound, a color — something small that refuses to leave your mind.</p><p>This is my little corner of the internet: a place for experiments, memories, and stories told through motion.</p><span class="signature">— aepsa1d</span></div>
+          <div class="interactive-diary" id="interactiveDiary"><div class="diary-cover"><span class="diary-stamp">✧</span><small>PERSONAL ARCHIVE</small><strong>Dear Diary</strong><i>VOL. 01 · UNKNOWN</i><button id="openDiary" class="diary-open">OPEN THE DIARY ↗</button></div><div class="diary-page"><button id="closeDiary" class="close-diary" aria-label="Close diary">×</button><p class="handwritten">Dear diary,</p><p>Some moments deserve to be kept somewhere between the light and the dark.</p><p>Maybe that is what editing is: learning how to hold on to a feeling just a little longer.</p><span>— aepsa1d</span></div></div>
+        </div>
+      </section>
+
+      <section class="preview-section section" id="preview-section"><div class="section-label">02 / PREVIEW ARCHIVE</div><h2>Take a closer <em>look.</em></h2><p class="section-intro">Choose a collection to preview it. Replace the sample images with your own edits whenever you're ready.</p><div class="preview-tabs"><button class="preview-tab active" data-tab="edits">EDITS</button><button class="preview-tab" data-tab="cc">COLOR CORRECTIONS</button><button class="preview-tab" data-tab="projects">PROJECTS</button><button class="preview-tab" data-tab="pack">EDIT PACK</button></div><div class="preview-grid" id="previewGrid"><button class="preview-item" data-full="assets/edits.jpg"><img src="assets/edits.jpg" alt="Edit preview"><span>PREVIEW 01 ↗</span></button><button class="preview-item" data-full="assets/edits-2.jpg"><img src="assets/edits-2.jpg" alt="Edit preview 2"><span>PREVIEW 02 ↗</span></button><button class="preview-item" data-full="assets/edits-3.jpg"><img src="assets/edits-3.jpg" alt="Edit preview 3"><span>PREVIEW 03 ↗</span></button></div></section>
+
+      <section class="candle-section section"><div class="candle-copy"><div class="section-label">03 / A LITTLE MAGIC</div><h2>Move the light.<br><em>Find the hidden.</em></h2><p>Drag the candle across the scene. A little light can reveal what the dark keeps hidden.</p><p class="drag-hint">↔ DRAG THE CANDLE WITH YOUR FINGER OR MOUSE</p></div><div class="candle-scene" id="candleScene"><div class="hidden-runes">ᚷ　ᛟ　ᚹ　✧　ᚷ<br>THE UNKNOWN IS NEVER EMPTY<br>ᛟ　✦　ᚹ　ᛟ</div><div class="candle-light" id="candleLight"></div><div class="candle" id="candle" role="slider" tabindex="0" aria-label="Drag candle to reveal runes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="flame"></div><div class="wick"></div><div class="wax"><i></i><i></i><i></i></div><div class="candle-base"></div></div><span class="scene-caption">A LIGHT IN THE DARK</span></div></section>
+
+      <section class="contact-section section" id="contact"><div class="section-label">04 / FIND ME ELSEWHERE</div><h2>Let’s create something<br><em>worth remembering.</em></h2><p>For edits, projects, questions or just to say hi.</p><div class="contact-buttons"><a class="social-button" href="https://www.tiktok.com/" target="_blank" rel="noreferrer">♪ TikTok <span class="external">↗</span></a><a class="social-button" href="https://discord.com/" target="_blank" rel="noreferrer">◉ Discord <span class="external">↗</span></a></div><p class="contact-note">LINKS ARE EASY TO PERSONALIZE IN <code>script.js</code></p></section>
+    </main>
+    <footer><a href="#home" class="footer-name">aepsa1d</a><span>MADE OF MOTION & MEMORY · © <span id="year"></span></span><a href="#home">BACK TO TOP ↑</a></footer>
+  </div>
+  <div class="lightbox" id="lightbox" aria-hidden="true"><button id="closeLightbox" aria-label="Close preview">×</button><img id="lightboxImage" src="" alt="Selected preview"><span>CLICK OUTSIDE OR PRESS ESC TO CLOSE</span></div>
+  <script src="script.js"></script>
+</body></html>
