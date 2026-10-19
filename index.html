@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#05070b"><meta name="description" content="aepsa1d — video edits, color corrections and After Effects projects.">
-  <title>aepsa1d — Edit Creator</title><link rel="stylesheet" href="style.css">
+  <title>aepsa1d — Edit Creator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- INTRO: Tribrid-inspired, used only before entering the portfolio -->
@@ -21,7 +25,14 @@
   <main id="site" class="site" aria-hidden="true">
     <div class="background-image"></div><div class="background-shade"></div><div class="background-vignette"></div><div class="mist mist-one"></div><div class="mist mist-two"></div><div class="dust-layer" id="dustLayer"></div>
     <div class="rune-field" aria-hidden="true"><span>ᛟ</span><span>✧</span><span>ᚷ</span><span>ᛉ</span><span>✦</span></div>
-    <div class="raven-wrap" aria-hidden="true"><svg class="raven" viewBox="0 0 180 92" role="img"><path d="M8 52 C26 29 45 24 69 37 C54 17 44 7 33 4 C58 5 81 23 91 39 C108 21 131 16 151 24 C139 25 128 34 119 43 C141 39 157 45 171 54 C150 51 139 58 126 65 L145 79 L119 73 L103 86 L93 66 C75 70 55 66 40 58 L20 67 L28 54 Z"/></svg></div>
+    <div class="raven-wrap" aria-hidden="true"><svg class="raven" viewBox="0 0 220 120" role="img" aria-label="Flying raven silhouette">
+      <g fill="#020304">
+        <path class="wing-back" d="M105 62 C82 40 63 14 31 8 C46 23 51 38 54 50 C36 34 18 28 4 30 C28 42 39 57 48 68 C66 75 84 76 105 72 Z"/>
+        <path d="M77 66 C94 54 109 49 126 54 C139 47 150 40 166 42 L184 36 L177 47 C194 46 207 51 218 60 C200 57 187 63 176 70 L153 81 L137 95 L126 79 C108 85 91 82 77 75 L57 82 L65 69 Z"/>
+        <path class="wing-front" d="M116 61 C132 40 155 20 184 18 C170 31 165 43 162 52 C181 40 197 38 212 43 C191 51 180 64 171 74 C153 81 135 78 116 72 Z"/>
+        <path d="M132 75 L144 104 L128 92 L116 108 L115 80 Z"/>
+      </g>
+    </svg></div>
     <header class="topbar">
       <nav class="main-nav" aria-label="Main navigation"><a class="nav-link active" href="#home">HOME</a><a class="nav-link" href="#edits">EDITS</a><a class="nav-link" href="#projects">PROJECTS</a><a class="nav-link" href="#cc">CC</a><a class="nav-link" href="#edit-pack">EDIT PACK</a></nav>
       <div class="top-social"><a href="#social" class="top-social-link" data-social="tiktok"><span class="social-glyph">♪</span> TikTok</a><a href="#social" class="top-social-link" data-social="discord"><span class="discord-glyph">◉</span> Discord</a><button class="spark-button" id="magicToggle" aria-label="Toggle magical particles">✴</button><button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button></div>
@@ -37,9 +48,9 @@
     </section>
     <section class="cards-section" aria-label="Portfolio categories">
       <a class="portfolio-card" id="edits" href="#preview-edits" data-preview="edits"><div class="card-image image-edits"><img src="assets/edits-preview.jpg" alt="Edit portfolio preview"></div><div class="card-glass"></div><span class="card-icon bird-icon">♧</span><h3>EDITS</h3><p>My best edits, all in one place.</p><span class="card-arrow">⟶</span><span class="card-glow"></span></a>
-      <a class="portfolio-card" id="cc" href="#preview-cc" data-preview="cc"><div class="card-image image-cc"><div class="eye-art"><span></span></div></div><div class="card-glass"></div><span class="card-icon">♆</span><h3>CC</h3><p>My color corrections<br>and colorings.</p><span class="card-arrow">⟶</span><span class="card-glow"></span></a>
-      <a class="portfolio-card" id="projects" href="#preview-projects" data-preview="projects"><div class="card-image image-projects"><div class="timeline-art"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="card-glass"></div><span class="card-icon">⚜</span><h3>PROJECTS</h3><p>AE projects, presets<br>and more.</p><span class="card-arrow">⟶</span><span class="card-glow"></span></a>
-      <a class="portfolio-card" id="edit-pack" href="#preview-pack" data-preview="pack"><div class="card-image image-pack"><div class="ae-cube">Ae</div></div><div class="card-glass"></div><span class="card-icon">▤</span><h3>EDIT PACK</h3><p>Resources for<br>your edits.</p><span class="card-arrow">⟶</span><span class="card-glow"></span></a>
+      <a class="portfolio-card" id="cc" href="#preview-cc" data-preview="cc"><div class="card-image"><img src="assets/cc-preview.jpg" alt="Color correction preview"></div><div class="card-glass"></div><span class="card-icon">♆</span><h3>CC</h3><p>My color corrections<br>and colorings.</p><span class="card-arrow">⟶</span><span class="card-glow"></span></a>
+      <a class="portfolio-card" id="projects" href="#preview-projects" data-preview="projects"><div class="card-image"><img src="assets/projects-preview.jpg" alt="After Effects project preview"></div><div class="card-glass"></div><span class="card-icon">⚜</span><h3>PROJECTS</h3><p>AE projects, presets<br>and more.</p><span class="card-arrow">⟶</span><span class="card-glow"></span></a>
+      <a class="portfolio-card" id="edit-pack" href="#preview-pack" data-preview="pack"><div class="card-image"><img src="assets/edit-pack-preview.jpg" alt="Edit pack preview"></div><div class="card-glass"></div><span class="card-icon">▤</span><h3>EDIT PACK</h3><p>Resources for<br>your edits.</p><span class="card-arrow">⟶</span><span class="card-glow"></span></a>
     </section>
     <section class="lower-stage">
       <div class="diary-area"><button class="diary-book" id="diaryButton" aria-label="Open the vampire diary"><span class="book-emblem">✦</span><span class="book-title">THE VAMPIRE<br>DIARIES</span><span class="book-hint">OPEN THE DIARY ↗</span></button><p class="corner-caption">the vampire<br>diaries<span>— ✦ —</span></p></div>
@@ -65,6 +76,6 @@
       </button>
     </div>
   </dialog>
-  <dialog class="preview-modal" id="previewModal"><button class="modal-close" id="closePreview" aria-label="Close preview">×</button><p class="diary-kicker" id="previewKicker">PORTFOLIO PREVIEW</p><h2 id="previewTitle">EDITS</h2><p id="previewText">Add your own preview images and links here.</p><div class="preview-placeholder" id="previewPlaceholder">YOUR PREVIEW IMAGE</div><button class="modal-action" id="nextPreview">NEXT PREVIEW ↗</button></dialog>
+  <dialog class="preview-modal" id="previewModal"><button class="modal-close" id="closePreview" aria-label="Close preview">×</button><p class="diary-kicker" id="previewKicker">PORTFOLIO PREVIEW</p><h2 id="previewTitle">EDITS</h2><p id="previewText">Add your own preview images and links here.</p><img class="preview-placeholder" id="previewPlaceholder" src="assets/edits-preview.jpg" alt="Portfolio preview"><button class="modal-action" id="nextPreview">NEXT PREVIEW ↗</button></dialog>
   <script src="script.js"></script>
 </body></html>

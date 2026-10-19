@@ -36,9 +36,14 @@ document.getElementById('closeDiary').addEventListener('click',closeDiary);
 diaryModal.addEventListener('click',e=>{if(e.target===diaryModal)closeDiary();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&diaryModal.open)closeDiary();});
 // Preview modal: placeholders are intentionally user-replaceable, not AI-generated pictures.
-const previews={edits:{title:'EDITS',kicker:'01 / VIDEO EDITS',text:'Your best edits, collected in one place.'},cc:{title:'COLOR CORRECTIONS',kicker:'02 / CC',text:'Your color grades, before-and-after frames and coloring previews.'},projects:{title:'AFTER EFFECTS PROJECTS',kicker:'03 / PROJECTS',text:'Project files, presets and breakdowns.'},pack:{title:'EDIT PACK',kicker:'04 / RESOURCES',text:'Your resources, overlays and editing assets.'}};
+const previews={
+  edits:{title:'EDITS',kicker:'01 / VIDEO EDITS',text:'Your best edits, collected in one place.',image:'assets/edits-preview.jpg'},
+  cc:{title:'COLOR CORRECTIONS',kicker:'02 / CC',text:'Your color grades, before-and-after frames and coloring previews.',image:'assets/cc-preview.jpg'},
+  projects:{title:'AFTER EFFECTS PROJECTS',kicker:'03 / PROJECTS',text:'Project files, presets and breakdowns.',image:'assets/projects-preview.jpg'},
+  pack:{title:'EDIT PACK',kicker:'04 / RESOURCES',text:'Your resources, overlays and editing assets.',image:'assets/edit-pack-preview.jpg'}
+};
 let currentPreview='edits';const previewModal=document.getElementById('previewModal');
-function openPreview(key){currentPreview=key;const p=previews[key]||previews.edits;document.getElementById('previewKicker').textContent=p.kicker;document.getElementById('previewTitle').textContent=p.title;document.getElementById('previewText').textContent=p.text;previewModal.showModal();}
+function openPreview(key){currentPreview=key;const p=previews[key]||previews.edits;document.getElementById('previewKicker').textContent=p.kicker;document.getElementById('previewTitle').textContent=p.title;document.getElementById('previewText').textContent=p.text;document.getElementById('previewPlaceholder').src=p.image;document.getElementById('previewPlaceholder').alt=p.title+' preview';if(!previewModal.open)previewModal.showModal();}
 document.querySelectorAll('[data-preview]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();openPreview(el.dataset.preview);}));
 document.getElementById('closePreview').addEventListener('click',()=>previewModal.close());
 document.getElementById('nextPreview').addEventListener('click',()=>{const keys=Object.keys(previews);openPreview(keys[(keys.indexOf(currentPreview)+1)%keys.length]);});
