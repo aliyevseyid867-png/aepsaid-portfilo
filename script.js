@@ -1,96 +1,56 @@
-/* PERSONALIZE YOUR SITE HERE: replace the example links and text with your own. */
-const LINKS = {
-  tiktok: 'https://www.tiktok.com/@YOUR_USERNAME',
-  discord: 'https://discord.com/users/YOUR_DISCORD_ID'
-};
-
-// Update social links across the page in one place.
-document.querySelectorAll('a[href="https://www.tiktok.com/"], a[href="https://discord.com/"]').forEach(link => {
-  if (link.href.includes('tiktok.com')) link.href = LINKS.tiktok;
-  if (link.href.includes('discord.com')) link.href = LINKS.discord;
-});
-
 const intro = document.getElementById('intro');
 const site = document.getElementById('site');
-function enterSite(){
-  intro.classList.add('leaving');
-  site.classList.add('visible');
-  document.body.classList.add('entered');
-  setTimeout(() => { intro.style.display = 'none'; }, 1100);
+function enterSite(){intro.classList.add('is-gone');site.setAttribute('aria-hidden','false');document.body.classList.add('entered');setTimeout(()=>{intro.style.display='none';},1100);}
+document.getElementById('enterButton').addEventListener('click',enterSite);
+document.getElementById('skipIntro').addEventListener('click',enterSite);
+// Generate subtle particles without external assets.
+const dustLayer=document.getElementById('dustLayer');
+for(let i=0;i<38;i++){const d=document.createElement('i');d.className='dust';d.style.left=(Math.random()*100)+'%';d.style.top=(Math.random()*100)+'%';d.style.animationDuration=(9+Math.random()*17)+'s';d.style.animationDelay=(-Math.random()*22)+'s';d.style.opacity=(.15+Math.random()*.55).toFixed(2);dustLayer.appendChild(d);}
+// Set the year and support the optional reduced-motion browser preference.
+document.getElementById('year').textContent=new Date().getFullYear();
+// Mobile navigation.
+const menuToggle=document.getElementById('menuToggle'),nav=document.querySelector('.main-nav');
+menuToggle.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+// Gentle 3D tilt on pointer devices; disabled for touch screens.
+if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){document.querySelectorAll('.portfolio-card').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;card.style.transform=`translateY(-7px) rotateX(${y*-4}deg) rotateY(${x*5}deg)`;});card.addEventListener('pointerleave',()=>card.style.removeProperty('transform'));});}
+// Interactive diary: open the dialog, then swing the cover open like a real book.
+const diaryModal=document.getElementById('diaryModal');
+const diaryCover=document.getElementById('diaryCover');
+const diaryBookScene=document.getElementById('diaryBookScene');
+function openDiary(){
+  diaryModal.classList.remove('is-closing');
+  diaryCover.classList.remove('is-open');
+  if(!diaryModal.open) diaryModal.showModal();
+  requestAnimationFrame(()=>setTimeout(()=>diaryCover.classList.add('is-open'),120));
 }
-document.getElementById('enterButton').addEventListener('click', enterSite);
-document.getElementById('skipIntro').addEventListener('click', enterSite);
-
-// Navigation highlight and mobile menu.
-const nav = document.querySelector('.main-nav');
-document.getElementById('mobileMenu').addEventListener('click', () => nav.classList.toggle('open'));
-nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
-nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  nav.querySelectorAll('a').forEach(item => item.classList.remove('active'));
-  a.classList.add('active');
-}));
-
-// Subtle atmosphere toggle (disables the floating runes and ambient blue glow).
-document.getElementById('soundToggle').addEventListener('click', e => {
-  document.body.classList.toggle('calm-mode');
-  e.currentTarget.style.color = document.body.classList.contains('calm-mode') ? '#8b93a2' : '#dfe8ff';
-});
-
-// Diary cover opens into a readable page.
-const diary = document.getElementById('interactiveDiary');
-document.getElementById('openDiary').addEventListener('click', () => diary.classList.add('open'));
-document.getElementById('closeDiary').addEventListener('click', () => diary.classList.remove('open'));
-
-// Preview collections: change image filenames here when you add your own work.
-const collections = {
-  edits: ['assets/edits.jpg','assets/edits-2.jpg','assets/edits-3.jpg'],
-  cc: ['assets/cc.jpg','assets/cc-2.jpg','assets/cc-3.jpg'],
-  projects: ['assets/projects.jpg','assets/projects-2.jpg','assets/projects-3.jpg'],
-  pack: ['assets/edit-pack.jpg','assets/edit-pack-2.jpg','assets/edit-pack-3.jpg']
-};
-const previewGrid = document.getElementById('previewGrid');
-function showCollection(name){
-  previewGrid.innerHTML = '';
-  collections[name].forEach((src,i) => {
-    const button = document.createElement('button'); button.className = 'preview-item'; button.dataset.full = src;
-    const img = document.createElement('img'); img.src = src; img.alt = `${name} preview ${i+1}`;
-    img.onerror = () => { img.style.opacity = '.15'; };
-    const label = document.createElement('span'); label.textContent = `PREVIEW 0${i+1} ↗`;
-    button.append(img,label); previewGrid.append(button);
-  });
+function closeDiary(){
+  if(!diaryModal.open) return;
+  diaryModal.classList.add('is-closing');
+  diaryCover.classList.remove('is-open');
+  setTimeout(()=>{diaryModal.close();diaryModal.classList.remove('is-closing');},420);
 }
-document.querySelectorAll('.preview-tab').forEach(tab => tab.addEventListener('click', () => {
-  document.querySelectorAll('.preview-tab').forEach(t => t.classList.remove('active'));
-  tab.classList.add('active'); showCollection(tab.dataset.tab);
-}));
-
-// Card click scrolls to the matching preview collection.
-document.querySelectorAll('.category-card').forEach(card => card.addEventListener('click', e => {
-  e.preventDefault(); const name = card.dataset.preview;
-  document.querySelectorAll('.preview-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
-  showCollection(name); document.getElementById('preview-section').scrollIntoView({behavior:'smooth'});
-}));
-
-// Preview lightbox.
-const lightbox = document.getElementById('lightbox'); const lightboxImage = document.getElementById('lightboxImage');
-previewGrid.addEventListener('click', e => {
-  const item = e.target.closest('.preview-item'); if (!item) return;
-  lightboxImage.src = item.dataset.full; lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden','false');
-});
-function closeLightbox(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');lightboxImage.src='';}
-document.getElementById('closeLightbox').addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => {if(e.target===lightbox) closeLightbox();});
-document.addEventListener('keydown', e => {if(e.key==='Escape'){closeLightbox();if(diary.classList.contains('open'))diary.classList.remove('open');}});
-
-// Candle is draggable with mouse or touch; its glow reveals the hidden runes.
-const scene = document.getElementById('candleScene'); const candle = document.getElementById('candle'); let dragging = false;
-function moveCandle(clientX){
-  const rect = scene.getBoundingClientRect(); const x = Math.max(25,Math.min(rect.width-25,clientX-rect.left));
-  const percent = x/rect.width*100; candle.style.left = `${percent}%`; scene.style.setProperty('--light-x',`${percent}%`); candle.setAttribute('aria-valuenow',Math.round(percent));
-}
-candle.addEventListener('pointerdown', e => {dragging=true;candle.setPointerCapture(e.pointerId);moveCandle(e.clientX);});
-candle.addEventListener('pointermove', e => {if(dragging)moveCandle(e.clientX);});
-candle.addEventListener('pointerup', () => dragging=false); candle.addEventListener('pointercancel',()=>dragging=false);
-candle.addEventListener('keydown', e => {if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();const r=scene.getBoundingClientRect();const current=parseFloat(candle.style.left)||50;const next=Math.max(5,Math.min(95,current+(e.key==='ArrowRight'?5:-5)));candle.style.left=`${next}%`;scene.style.setProperty('--light-x',`${next}%`);candle.setAttribute('aria-valuenow',next);}});
-
-document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('diaryButton').addEventListener('click',openDiary);
+diaryCover.addEventListener('click',()=>diaryCover.classList.toggle('is-open'));
+document.getElementById('closeDiary').addEventListener('click',closeDiary);
+diaryModal.addEventListener('click',e=>{if(e.target===diaryModal)closeDiary();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&diaryModal.open)closeDiary();});
+// Preview modal: placeholders are intentionally user-replaceable, not AI-generated pictures.
+const previews={edits:{title:'EDITS',kicker:'01 / VIDEO EDITS',text:'Your best edits, collected in one place.'},cc:{title:'COLOR CORRECTIONS',kicker:'02 / CC',text:'Your color grades, before-and-after frames and coloring previews.'},projects:{title:'AFTER EFFECTS PROJECTS',kicker:'03 / PROJECTS',text:'Project files, presets and breakdowns.'},pack:{title:'EDIT PACK',kicker:'04 / RESOURCES',text:'Your resources, overlays and editing assets.'}};
+let currentPreview='edits';const previewModal=document.getElementById('previewModal');
+function openPreview(key){currentPreview=key;const p=previews[key]||previews.edits;document.getElementById('previewKicker').textContent=p.kicker;document.getElementById('previewTitle').textContent=p.title;document.getElementById('previewText').textContent=p.text;previewModal.showModal();}
+document.querySelectorAll('[data-preview]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();openPreview(el.dataset.preview);}));
+document.getElementById('closePreview').addEventListener('click',()=>previewModal.close());
+document.getElementById('nextPreview').addEventListener('click',()=>{const keys=Object.keys(previews);openPreview(keys[(keys.indexOf(currentPreview)+1)%keys.length]);});
+// Candle can be dragged horizontally with mouse or touch. Its light follows the flame.
+const candleTrack=document.getElementById('candleTrack'),flame=candleTrack.querySelector('.candle-flame'),wax=candleTrack.querySelector('.candle-wax'),holder=candleTrack.querySelector('.candle-holder');let dragging=false;
+function moveCandle(clientX){const r=candleTrack.getBoundingClientRect();const x=Math.max(8,Math.min(r.width-38,clientX-r.left-8));wax.style.marginLeft=x+'px';holder.style.marginLeft=(x-20)+'px';flame.style.left=(x+3)+'px';candleTrack.style.paddingLeft='0';}
+candleTrack.addEventListener('pointerdown',e=>{dragging=true;candleTrack.classList.add('dragging');candleTrack.setPointerCapture(e.pointerId);moveCandle(e.clientX);});
+candleTrack.addEventListener('pointermove',e=>{if(dragging)moveCandle(e.clientX);});
+function stopCandle(){dragging=false;candleTrack.classList.remove('dragging');}
+candleTrack.addEventListener('pointerup',stopCandle);candleTrack.addEventListener('pointercancel',stopCandle);
+// Magic toggle softly dims decorative particles/runes without disabling the raven or background.
+document.getElementById('magicToggle').addEventListener('click',()=>{document.body.classList.toggle('magic-muted');const muted=document.body.classList.contains('magic-muted');document.querySelector('.rune-field').style.opacity=muted?'.15':'1';dustLayer.style.opacity=muted?'.15':'1';});
+// Replace these example destinations with your actual TikTok and Discord URLs in this file.
+const SOCIAL_LINKS={tiktok:'https://www.tiktok.com/@YOUR_USERNAME',discord:'https://discord.com/users/YOUR_USER_ID'};
+document.querySelectorAll('[data-social]').forEach(a=>{const key=a.dataset.social;a.href=SOCIAL_LINKS[key];a.target='_blank';a.rel='noopener noreferrer';a.addEventListener('click',e=>{if(a.href.includes('YOUR_USERNAME')||a.href.includes('YOUR_USER_ID')){e.preventDefault();alert('Replace the example '+key+' link in script.js with your own link.');}});});
